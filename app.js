@@ -16,7 +16,7 @@ function init() {
   showSection("bank");
   updateProgress();
   updateWrongBadge();
-  renderQuestionBank();
+  // renderQuestionBank(); (called from showSection)
 }
 
 // ============ Navigation ============
@@ -43,7 +43,7 @@ function showSection(name) {
 
   switch (name) {
     case "bank":
-      renderQuestionBank();
+      // renderQuestionBank(); (called from showSection)
       break;
     case "exam":
       renderExamSection();
@@ -68,7 +68,7 @@ function initSubjectTabs() {
       state.currentQuestionIdx = 0;
       document.querySelectorAll(".subject-tab").forEach(t => t.classList.remove("active"));
       el.classList.add("active");
-      renderQuestionBank();
+      // renderQuestionBank(); (called from showSection)
     });
   });
 }
@@ -106,7 +106,7 @@ function renderQuestionBank() {
   document.querySelectorAll("#qbank-dots .q-dot").forEach(el => {
     el.addEventListener("click", () => {
       state.currentQuestionIdx = parseInt(el.dataset.idx);
-      renderQuestionBank();
+      // renderQuestionBank(); (called from showSection)
     });
   });
 
@@ -120,7 +120,7 @@ function renderQuestionBank() {
       // If user previously got it wrong but now correct, remove from wrong
       removeWrongAnswer(qId);
     }
-    renderQuestionBank();
+    // renderQuestionBank(); (called from showSection)
     updateProgress();
     updateWrongBadge();
   });
